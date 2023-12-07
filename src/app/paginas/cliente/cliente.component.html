@@ -2,22 +2,26 @@
     <div class="fondo">
         <img src="../assets/imagenes/online-education.png" alt="centro">
     </div>
+    <h1 class="titulo">Registrar Estudiante</h1>
     <div class="formulario">
-        <h1>Registrar</h1>
-    <label class="form-label" for="txtNombre"><span>Cedula</span></label>
-    <input type="text" id="txtCedula" [(ngModel)]="cliente.cedula" placeholder="0101111111" required>
-    <label class="form-label" for="txtNombre"><span>Nombre</span></label>
-    <input type="text" id="txtNombre" [(ngModel)]="cliente.nombre" placeholder="Juan" required>
-    <label class="form-label" for="txtApellido"><span>Apellido</span></label>
-    <input type="text" id="txtApellido" [(ngModel)]="cliente.apellido" placeholder="Perez" required>
-    <label class="form-label" for="txtCorreo"><span>Correo</span></label>
-    <input type="text" id="txtCorreo" [(ngModel)]="cliente.correo" placeholder="Example@correo.com" required>
-    <label class="form-label" for="txtCorreo"><span>Contraseña</span></label>
-    <input type="password" id="txtContraseña" [(ngModel)]="cliente.contrasena" placeholder="*************" required>
-    <label class="form-label" for="txtCelular"><span>Celular</span></label>
-    <input type="text" id="txtCelular" [(ngModel)]="cliente.celular" placeholder="0999999999" required>
-    <label class="form-label" for="txtDireccion"><span>Direccion</span></label>
-    <input type="text" id="txtDireccion" [(ngModel)]="cliente.direccion" placeholder="Direccion 1" required>
-    <div><button>Registrarse</button></div>
+        <div class="ced-nom-ape-cor">
+            <label class="form-label" for="txtNombre"><span>Cedula</span></label>
+            <input type="text" id="txtCedula" [(ngModel)]="cliente.cedula" placeholder="0101111111" required>
+            <label class="form-label" for="txtNombre"><span>Nombre</span></label>
+            <input type="text" id="txtNombre" [(ngModel)]="cliente.nombre" placeholder="Juan" required>
+            <label class="form-label" for="txtApellido"><span>Apellido</span></label>
+            <input type="text" id="txtApellido" [(ngModel)]="cliente.apellido" placeholder="Perez" required>
+            <label class="form-label" for="txtCorreo"><span>Correo</span></label>
+            <input type="text" id="txtCorreo" [(ngModel)]="cliente.correo" placeholder="Example@correo.com" required>
+        </div>
+        <div class="con-cel-dir-bot">
+            <label class="form-label" for="txtCorreo"><span>Contraseña</span></label>
+        <input type="password" id="txtContraseña" [(ngModel)]="cliente.contrasena" placeholder="*********" required>
+        <label class="form-label" for="txtCelular"><span>Celular</span></label>
+        <input type="text" id="txtCelular" [(ngModel)]="cliente.celular" placeholder="0999999999" required>
+        <label class="form-label" for="txtDireccion"><span>Direccion</span></label>
+        <input type="text" id="txtDireccion" [(ngModel)]="cliente.direccion" placeholder="Direccion 1" required>
+        <div><button>Registrarse</button></div>
+        </div>
     </div>
 </div>

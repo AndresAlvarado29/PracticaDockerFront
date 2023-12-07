@@ -1,18 +1,28 @@
 .fondo{
+display: flex;
 position: absolute;
 z-index: 0;
 opacity: 0.5;
-    img{
-        max-width: 1000px;
-    }
+img{
+    min-width: 1000px;
+    height: 560px;
+}
+ transform: scale(1);   
+}
+.titulo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 20px;
 }
 .formulario{
     position: relative;
     top: 40px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    justify-content: space-evenly;
+    flex-direction: row;
     flex-wrap: wrap;
     gap: 10px;
     z-index: 1;
@@ -26,4 +36,24 @@ opacity: 0.5;
             border-bottom: 2px solid black;
         }
     }
+}
+.ced-nom-ape-cor{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    float: right;
+}
+.con-cel-dir-bot{
+    top: -35px;
+    gap: 10px;
+    flex-wrap: wrap;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    float: left;
 }
