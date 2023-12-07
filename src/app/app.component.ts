@@ -7,4 +7,19 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'PracticaMicroservicios';
+  constructor(){
+
+  }
+  ngOnInit(){
+    
+  }
+  Inicio=true;
+
+  ocultar(){
+    this.Inicio=false;
+  }
+  aparecer(){
+    this.Inicio=true;
+  }
+
 }
