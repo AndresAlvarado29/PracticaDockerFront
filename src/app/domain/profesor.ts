@@ -7,3 +7,4 @@ export class Profesor {
     celular: string = '';
     direccion: string = '';
 }
+

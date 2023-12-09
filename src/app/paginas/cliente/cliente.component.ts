@@ -11,6 +11,11 @@ import { ServicioService } from 'src/app/servicios/servicio.service';
   styleUrls: ['./cliente.component.scss']
 })
 export class ClienteComponent implements OnInit {
+  tabla=false;
+  inputCedula: string = '#bbbabac5';
+  inputNombre: string = '#bbbabac5';
+  inputApellido: string = '#bbbabac5';
+  inputDireccion: string = '#bbbabac5';
   cliente: Cliente = new Cliente();
   listadoClienteWS: any;
   dataSourceF: any;
@@ -30,6 +35,8 @@ export class ClienteComponent implements OnInit {
   }
 
   ngOnInit(){
+    this.listadoClienteWS = this.servicio.getAll(); //aparece la lista
+    this.dataSource = this.listadoClienteWS;
   setTimeout(() => {
     this.visualizar() // Realizar el cambio de forma asincrónica
   });
@@ -39,5 +46,70 @@ export class ClienteComponent implements OnInit {
     if (currentUrl == '/pagina/cliente') {
       this.app.ocultar()
     }
+  }
+  //acciones
+  //guardar cliente
+  guardarWS() {
+    this.vacio();
+    if (this.vacio() == false) {
+      alert("Error 98: Campos vacios") //validacion de espacios vacios
+    } else {
+      console.log(this.cliente)
+      this.servicio.save(this.cliente).subscribe(data => {
+        if (data.codigo == 99) {
+          alert("Codigo: " + data.codigo + " " + data.mensaje);
+          this.inputCedula = '#e93c3c'
+        } else {
+          this.selectedCliente = null;//sirve para limpiar el formulario despues de guardar
+          this.colorOriginal();
+          console.log("cliente/guardado" + this.cliente);
+          this.tabla=true
+          this.ngOnInit();
+          this.cliente = new Cliente();
+        }
+      });
+    }
+  }
+  editarWS(cliente: Cliente) {
+    this.selectedCliente = cliente;
+    /*
+    Object.assign hace una copia del cliente para tabajar con una
+    entidad independiente para no afectar a la tabla original sin
+    pasar antes de la funcion guardarWS 
+    */
+    this.cliente = Object.assign({}, cliente);  // Copia el cliente seleccionado en el formulario
+  }
+  colorOriginal() {
+    this.inputCedula = '#bbbabac5';
+    this.inputNombre = '#bbbabac5';
+    this.inputApellido = '#bbbabac5';
+    this.inputDireccion = '#bbbabac5';
+  }
+  vacio() {
+    var bandera: Boolean;
+    bandera = true;
+    if (this.cliente.nombre == "") {
+      this.inputNombre = '#e93c3c'
+      bandera = false;
+    }
+    if (this.cliente.apellido == "") {
+      this.inputApellido = '#e93c3c'
+      bandera = false;
+    }
+    if (this.cliente.direccion == "") {
+      this.inputDireccion = '#e93c3c'
+      bandera = false;
+    }
+    if (this.cliente.nombre == "" && this.cliente.apellido == "" && this.cliente.direccion == "") {
+      this.inputNombre = '#e93c3c'
+      this.inputApellido = '#e93c3c'
+      this.inputDireccion = '#e93c3c'
+      bandera = false;
+    }
+    else {
+      bandera = true;
+      return bandera;
+    }
+    return bandera;
   }
 }

@@ -1,6 +1,6 @@
 <div class="registro">
     <div class="fondo">
-        <img src="../assets/imagenes/online-education.png" alt="centro">
+        <img class="img-fluid" src="../assets/imagenes/online-education.png" alt="centro">
     </div>
     <h1 class="titulo">Registrar Profesor</h1>
     <div class="formulario">
@@ -21,7 +21,50 @@
         <input type="text" id="txtCelular" [(ngModel)]="profesor.celular" placeholder="0999999999" required>
         <label class="form-label" for="txtDireccion"><span>Direccion</span></label>
         <input type="text" id="txtDireccion" [(ngModel)]="profesor.direccion" placeholder="Direccion 1" required>
-        <div><button>Registrarse</button></div>
+        <div><button class="btn btn-outline-primary" (click)="guardarWS()">Registrarse</button></div>
         </div>
     </div>
 </div>
+<div *ngIf="tabla" class="tabla container">
+    <h2>Tabla</h2>
+    <mat-table [dataSource]="dataSource" class="mat-elevation-z8" >
+      <ng-container matColumnDef="Cedula"  >
+        <mat-header-cell  *matHeaderCellDef> Cedula </mat-header-cell>
+        <mat-cell *matCellDef="let profesor"> {{profesor.cedula}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="Nombre">
+        <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+        <mat-cell *matCellDef="let profesor"> {{profesor.nombre}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="Apellido">
+        <mat-header-cell *matHeaderCellDef> Apellido </mat-header-cell>
+        <mat-cell *matCellDef="let profesor"> {{profesor.apellido}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="Celular">
+        <mat-header-cell *matHeaderCellDef> Celular </mat-header-cell>
+        <mat-cell *matCellDef="let profesor"> {{profesor.celular}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="Correo">
+        <mat-header-cell *matHeaderCellDef> Correo </mat-header-cell>
+        <mat-cell *matCellDef="let profesor"> {{profesor.correo}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="Direccion">
+        <mat-header-cell *matHeaderCellDef> Direccion </mat-header-cell>
+        <mat-cell *matCellDef="let profesor"> {{profesor.direccion}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="Accion">
+        <mat-header-cell *matHeaderCellDef> Accion </mat-header-cell>
+        <mat-cell *matCellDef="let profesor">
+          <!--ngClass se utiliza para agregar clases dinamicamente en funcion de una condicion para agregar css al boton de la fila que va hacer editada con la
+          condicion de que selectedprofesor sea igual a el profesor-->
+          <button class="botonT btn btn-outline-primary" [ngClass]="{ 'selected-row': profesor === selectedProfesor }">Editar</button>
+          <button class="botonT btn btn-outline-primary" >Borrar</button>
+        </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <span *ngIf="listadoProfesorWS.length == 0">
+      No existen contactos
+  </span>
+  </div>
