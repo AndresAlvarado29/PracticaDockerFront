@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
 import { Cliente } from 'src/app/domain/cliente';
 import { MatTable } from '@angular/material/table';
@@ -12,6 +12,7 @@ import { ServicioService } from 'src/app/servicios/servicio.service';
 })
 export class ClienteComponent implements OnInit {
   tabla=false;
+  boton=false;
   inputCedula: string = '#bbbabac5';
   inputNombre: string = '#bbbabac5';
   inputApellido: string = '#bbbabac5';
@@ -20,7 +21,7 @@ export class ClienteComponent implements OnInit {
   listadoClienteWS: any;
   dataSourceF: any;
   selectedCliente: Cliente | null = null;// en este se puede guardar cliente o nulo y se inicializa en nulo
-  displayedColumns: string[] = ['Cedula', 'Nombre', 'Apellido', 'Celular', 'Correo', 'Direccion', 'Accion'];
+  displayedColumns: string[] = ['Cedula', 'Nombre', 'Apellido', 'Celular', 'Correo', 'Direccion'];
   dataSource = this.servicio.getAll();
   @ViewChild(MatTable)
   table!: MatTable<Cliente>;
@@ -49,13 +50,13 @@ export class ClienteComponent implements OnInit {
   }
   //acciones
   //guardar cliente
-  guardarWS() {
+  guardarWS(client: Cliente) {
     this.vacio();
     if (this.vacio() == false) {
       alert("Error 98: Campos vacios") //validacion de espacios vacios
     } else {
       console.log(this.cliente)
-      this.servicio.save(this.cliente).subscribe(data => {
+      this.servicio.save(client).subscribe(data => {
         if (data.codigo == 99) {
           alert("Codigo: " + data.codigo + " " + data.mensaje);
           this.inputCedula = '#e93c3c'
@@ -64,11 +65,16 @@ export class ClienteComponent implements OnInit {
           this.colorOriginal();
           console.log("cliente/guardado" + this.cliente);
           this.tabla=true
+          this.boton=true
           this.ngOnInit();
           this.cliente = new Cliente();
         }
       });
     }
+  }
+
+  agregar(cliente: Cliente){
+    return cliente.cedula
   }
   editarWS(cliente: Cliente) {
     this.selectedCliente = cliente;
@@ -113,3 +119,7 @@ export class ClienteComponent implements OnInit {
     return bandera;
   }
 }
+
+
+/*
+this.router.navigate(['paginas/listacontactos'])*/ 

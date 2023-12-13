@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 //materials
 import {MatTableModule} from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
+import { ListaCursosComponent } from './paginas/lista-cursos/lista-cursos.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
     ProfesorComponent,
     InicioComponent,
     CursoComponent,
-    MenuComponent
+    MenuComponent,
+    ListaCursosComponent
   ],
   imports: [
     BrowserModule,

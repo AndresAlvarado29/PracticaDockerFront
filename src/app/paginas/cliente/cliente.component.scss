@@ -63,6 +63,11 @@ img{
         border-radius: 4px;
     }
 }
+.bot{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .tabla{
     h2{
         display: flex;
@@ -76,4 +81,7 @@ img{
     .botonT{
         border-radius: 4px;
     }
+}
+.bot a{
+    text-decoration: none;   
 }

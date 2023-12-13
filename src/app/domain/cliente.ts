@@ -1,3 +1,5 @@
+import { Curso } from "./curso";
+
 export class Cliente {
     cedula: string = '';
     nombre: string = '';
@@ -6,4 +8,5 @@ export class Cliente {
     contrasena: string='';
     celular: string = '';
     direccion: string = '';
+    curso: Curso= new Curso;
 }

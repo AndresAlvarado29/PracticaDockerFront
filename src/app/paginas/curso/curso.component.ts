@@ -25,12 +25,12 @@ export class CursoComponent implements OnInit {
   listadoCursoWS: any;
   dataSourceF: any;
   selectedCurso: Curso | null = null;
-  displayedColumns: string[]=['Nombre','Horas','Profesor'];
-  dataSource = this.servicio.getAll();
+  displayedColumns: string[]=['Nombre','Horas','Cedula','Profesor'];
+  dataSource = this.servicio.getAllCursos();
   @ViewChild(MatTable)
   table!: MatTable<Curso>;
   constructor(private servicio: ServicioService,private router: Router, private app: AppComponent){
-    this.listadoCursoWS = this.servicio.getAll();
+    this.listadoCursoWS = this.servicio.getAllCursos();
     let params = this.router.getCurrentNavigation()?.extras.queryParams;
     if (params) {
       this.curso = new Curso();
@@ -66,8 +66,8 @@ export class CursoComponent implements OnInit {
     async guardarWS(pro: Profesor, cur: Curso) {
       console.log(cur);
       console.log(this.profesor.cedula);
-    
-      const profesorEncontrado = await this.buscar(pro);
+      
+      const profesorEncontrado = await this.buscar3(pro);
     
       if (profesorEncontrado) {
         cur.profesor=profesorEncontrado;
@@ -79,6 +79,7 @@ export class CursoComponent implements OnInit {
           this.curso = cur;
           this.curso = new Curso();
           this.profesor = new Profesor();
+          this.tabla=true
         });
       } else {
         console.error('No se encontró el profesor');
@@ -114,7 +115,7 @@ export class CursoComponent implements OnInit {
 
     async buscar(pro: Profesor) {
       try {
-        const data: any = await this.servicio.buscar(pro.cedula).toPromise();
+        const data: any = await this.servicio.buscarProfesor(pro.cedula).toPromise();
         this.apellido = data.apellido;
         this.correo = data.correo;
         this.contrasena = data.contrasena;

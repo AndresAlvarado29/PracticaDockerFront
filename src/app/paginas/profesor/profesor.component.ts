@@ -21,13 +21,13 @@ export class ProfesorComponent implements OnInit {
   listadoProfesorWS: any;
   dataSourceF: any;
   selectedProfesor: Profesor | null = null;// en este se puede guardar profesor o nulo y se inicializa en nulo
-  displayedColumns: string[] = ['Cedula', 'Nombre', 'Apellido', 'Celular', 'Correo', 'Direccion', 'Accion'];
-  dataSource = this.servicio.getAll();
+  displayedColumns: string[] = ['Cedula', 'Nombre', 'Apellido', 'Celular', 'Correo', 'Direccion'];
+  dataSource = this.servicio.getAllProfesores();
   @ViewChild(MatTable)
   table!: MatTable<Profesor>;
   constructor(private servicio: ServicioService,
     private router: Router, private app: AppComponent) {
-    this.listadoProfesorWS = this.servicio.getAll();
+    this.listadoProfesorWS = this.servicio.getAllProfesores();
     let params = this.router.getCurrentNavigation()?.extras.queryParams;
     if (params) {
       this.profesor = new Profesor();

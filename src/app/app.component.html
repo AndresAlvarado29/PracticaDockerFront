@@ -17,5 +17,10 @@
   <div class="cuerpo">
     <router-outlet></router-outlet>
     <app-inicio *ngIf="Inicio"></app-inicio>
+    <div *ngIf="BotonI" class="boton">
+      <button class="boton btn btn-outline-primary"><span><a href="pagina/cliente">Iniciar</a></span></button>
+    </div>
   </div>
+  
+  
 

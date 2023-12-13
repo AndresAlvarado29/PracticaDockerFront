@@ -13,12 +13,15 @@ export class AppComponent {
   ngOnInit(){
     
   }
+  BotonI=true;
   Inicio=true;
 
   ocultar(){
     this.Inicio=false;
+    this.BotonI=false;
   }
   aparecer(){
+    this.BotonI=true;
     this.Inicio=true;
   }
 

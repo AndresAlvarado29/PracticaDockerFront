@@ -52,15 +52,15 @@
         <mat-header-cell *matHeaderCellDef> Direccion </mat-header-cell>
         <mat-cell *matCellDef="let profesor"> {{profesor.direccion}} </mat-cell>
       </ng-container>
-      <ng-container matColumnDef="Accion">
+     <!--  <ng-container matColumnDef="Accion">
         <mat-header-cell *matHeaderCellDef> Accion </mat-header-cell>
         <mat-cell *matCellDef="let profesor">
-          <!--ngClass se utiliza para agregar clases dinamicamente en funcion de una condicion para agregar css al boton de la fila que va hacer editada con la
-          condicion de que selectedprofesor sea igual a el profesor-->
+         ngClass se utiliza para agregar clases dinamicamente en funcion de una condicion para agregar css al boton de la fila que va hacer editada con la
+          condicion de que selectedprofesor sea igual a el profesor
           <button class="botonT btn btn-outline-primary" [ngClass]="{ 'selected-row': profesor === selectedProfesor }">Editar</button>
           <button class="botonT btn btn-outline-primary" >Borrar</button>
         </mat-cell>
-      </ng-container>
+      </ng-container>-->
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
