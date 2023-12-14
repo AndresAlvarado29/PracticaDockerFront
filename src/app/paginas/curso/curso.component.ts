@@ -67,18 +67,14 @@ export class CursoComponent implements OnInit {
       console.log(cur);
       console.log(this.profesor.cedula);
       
-      const profesorEncontrado = await this.buscar3(pro);
+      const profesorEncontrado = this.buscar(pro);
     
       if (profesorEncontrado) {
         cur.profesor=profesorEncontrado;
-        console.log(cur.profesor);
-        console.log(cur)
         this.servicio.saveCurso(cur).subscribe(data => {
           console.log("curso guardado: ", data);
           this.ngOnInit();
-          this.curso = cur;
           this.curso = new Curso();
-          this.profesor = new Profesor();
           this.tabla=true
         });
       } else {
@@ -86,55 +82,23 @@ export class CursoComponent implements OnInit {
       }
     }
 
-    buscar3(pro: Profesor){
-      this.servicio.buscar(pro.cedula).subscribe(data=>{
+    buscar(pro: Profesor){
+      this.servicio.buscarProfesor(pro.cedula).subscribe(data=>{
         console.log(data)
-        this.apellido = data.apellido;
-        this.correo =data.correo;
-        this.contrasena=data.contrasena;
-        this.celular = data.celular;
-        this.direccion = data.direccion;
         pro.cedula=data.cedula
         pro.nombre=data.nombre
-        pro.apellido=this.apellido
-        pro.correo=this.correo
-        pro.contrasena=this.contrasena
-        pro.celular=this.celular
-        pro.direccion=this.direccion
+        pro.apellido=data.apellido
+        pro.correo=data.correo
+        pro.contrasena=data.contrasena
+        pro.celular=data.celular
+        pro.direccion=data.direccion
         console.log(pro)
         return pro;
       })
-      pro.apellido=this.apellido
-        pro.correo=this.correo
-        pro.contrasena=this.contrasena
-        pro.celular=this.celular
-        pro.direccion=this.direccion
       return pro
-      console.log(pro)
+      
     }
 
-    async buscar(pro: Profesor) {
-      try {
-        const data: any = await this.servicio.buscarProfesor(pro.cedula).toPromise();
-        this.apellido = data.apellido;
-        this.correo = data.correo;
-        this.contrasena = data.contrasena;
-        this.celular = data.celular;
-        this.direccion = data.direccion;
-        pro.cedula = data.cedula;
-        pro.nombre = data.nombre;
-        pro.apellido = this.apellido;
-        pro.correo = this.correo;
-        pro.contrasena = this.contrasena;
-        pro.celular = this.celular;
-        pro.direccion = this.direccion;
-        console.log(pro);
-        return pro;
-      } catch (error) {
-        console.error('Error al buscar:', error);
-        return null;
-      }
-    }
     
 }
   

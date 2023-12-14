@@ -13,25 +13,31 @@ export class ServicioService {
   save(cliente: Cliente){
     return this.http.post<any>("http://localhost:8090/ms/estudiante/crear", cliente)
   }
+  buscarEstudiante(cedula: String){
+    return this.http.get<any>("http://localhost:8080/ms/estudiante/buscar/"+ cedula)
+    }
+    actualizar(cliente: Cliente){
+    return this.http.post<any>("http://localhost:8080/ms/estudiante/actualizar", cliente)
+    }
   getAll(){
     return this.http.get<any>("http://localhost:8080/ms/estudiante/all")
     } 
   saveProfesor(profesor: Profesor){
-      return this.http.post<any>("http://localhost:8190/microservice/profesor/guardar", profesor)
+    return this.http.post<any>("http://localhost:8190/microservice/profesor/guardar", profesor)
     }
   getAllProfesores(){
-      return this.http.get<any>("http://localhost:8080/microservice/profesor/all")
-      }
+    return this.http.get<any>("http://localhost:8080/microservice/profesor/all")
+    }
   buscar(cedula: String){
-      return this.http.get<any>("http://localhost:8080/microservice/profesor/buscar/"+ cedula)
-      }
+    return this.http.get<any>("http://localhost:8080/microservice/profesor/buscar/"+ cedula)
+    }
   saveCurso(curso: Curso){
-        return this.http.post<any>("http://localhost:9090/microservice/curso/guardar", curso)
-      }
+    return this.http.post<any>("http://localhost:9090/microservice/curso/guardar", curso)
+    }
   getAllCursos(){
-        return this.http.get<any>("http://localhost:8080/microservice/curso/all")
-        } 
+    return this.http.get<any>("http://localhost:8080/microservice/curso/all")
+    } 
   buscarProfesor(cedula: String){
-       return this.http.get<any>("http://localhost:8080/microservice/curso/buscarPro/"+cedula)
-  }     
+    return this.http.get<any>("http://localhost:8080/microservice/curso/buscarPro/"+cedula)
+    }     
 }

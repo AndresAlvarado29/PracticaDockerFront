@@ -22,7 +22,7 @@
         <mat-cell *matCellDef="let curso">
           <!--ngClass se utiliza para agregar clases dinamicamente en funcion de una condicion para agregar css al boton de la fila que va hacer editada con la
           condicion de que selectedcurso sea igual a el curso-->
-          <button class="botonT btn btn-outline-primary" >Inscribirse</button>
+          <button class="botonT btn btn-outline-primary" (click)="incribir(curso)">Inscribirse</button>
         </mat-cell>
       </ng-container>
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

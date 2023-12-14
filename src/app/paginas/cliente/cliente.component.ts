@@ -18,6 +18,7 @@ export class ClienteComponent implements OnInit {
   inputApellido: string = '#bbbabac5';
   inputDireccion: string = '#bbbabac5';
   cliente: Cliente = new Cliente();
+  static cliente2: Cliente=new Cliente();
   listadoClienteWS: any;
   dataSourceF: any;
   selectedCliente: Cliente | null = null;// en este se puede guardar cliente o nulo y se inicializa en nulo
@@ -55,7 +56,8 @@ export class ClienteComponent implements OnInit {
     if (this.vacio() == false) {
       alert("Error 98: Campos vacios") //validacion de espacios vacios
     } else {
-      console.log(this.cliente)
+      ClienteComponent.cliente2=this.cliente;
+      console.log(this.cliente+"ahora soy el cliente de componente: "+ ClienteComponent.cliente2)
       this.servicio.save(client).subscribe(data => {
         if (data.codigo == 99) {
           alert("Codigo: " + data.codigo + " " + data.mensaje);
@@ -74,8 +76,10 @@ export class ClienteComponent implements OnInit {
   }
 
   agregar(cliente: Cliente){
-    return cliente.cedula
+    this.router.navigate(['pagina/lista'])
   }
+
+
   editarWS(cliente: Cliente) {
     this.selectedCliente = cliente;
     /*
