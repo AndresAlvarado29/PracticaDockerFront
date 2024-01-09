@@ -25,7 +25,7 @@ export class CursoComponent implements OnInit {
   listadoCursoWS: any;
   dataSourceF: any;
   selectedCurso: Curso | null = null;
-  displayedColumns: string[]=['Nombre','Horas','Cedula','Profesor'];
+  displayedColumns: string[]=['Nombre','Horas','Accion'];
   dataSource = this.servicio.getAllCursos();
   @ViewChild(MatTable)
   table!: MatTable<Curso>;

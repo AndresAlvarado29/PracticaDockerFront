@@ -22,7 +22,7 @@ export class ClienteComponent implements OnInit {
   listadoClienteWS: any;
   dataSourceF: any;
   selectedCliente: Cliente | null = null;// en este se puede guardar cliente o nulo y se inicializa en nulo
-  displayedColumns: string[] = ['Cedula', 'Nombre', 'Apellido', 'Celular', 'Correo', 'Direccion'];
+  displayedColumns: string[] = ['Cedula', 'Nombre', 'Apellido', 'Celular', 'Correo', 'Direccion','Accion'];
   dataSource = this.servicio.getAll();
   @ViewChild(MatTable)
   table!: MatTable<Cliente>;

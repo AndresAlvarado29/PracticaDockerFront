@@ -22,7 +22,7 @@
         <label class="form-label" for="txtDireccion"><span>Direccion</span></label>
         <input type="text" id="txtDireccion" [(ngModel)]="cliente.direccion" placeholder="Direccion 1" required>
         <div><button id="boton" class="btn btn-outline-primary" (click)="guardarWS(cliente)">Registrarse</button></div>
-        <div *ngIf="boton"><button class="bot btn btn-outline-primary" (click)="agregar(cliente)">Agregar Curso</button></div>
+        <!--<div *ngIf="boton"><button class="bot btn btn-outline-primary" (click)="agregar(cliente)">Agregar Curso</button></div>-->
         </div>
     </div>
 </div>
@@ -56,8 +56,8 @@
       <ng-container matColumnDef="Accion">
        <mat-header-cell *matHeaderCellDef> Accion </mat-header-cell>
         <mat-cell *matCellDef="let cliente">
-          ngClass se utiliza para agregar clases dinamicamente en funcion de una condicion para agregar css al boton de la fila que va hacer editada con la
-          condicion de que selectedCliente sea igual a el cliente
+          <!--ngClass se utiliza para agregar clases dinamicamente en funcion de una condicion para agregar css al boton de la fila que va hacer editada con la
+          condicion de que selectedCliente sea igual a el cliente-->
           <button class="botonT btn btn-outline-primary" [ngClass]="{ 'selected-row': cliente === selectedCliente }" (click)="editarWS(cliente)">Editar</button>
           <button class="botonT btn btn-outline-primary" (click)="borrarWS(cliente)">Borrar</button>
         </mat-cell>

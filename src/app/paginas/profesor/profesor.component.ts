@@ -21,7 +21,7 @@ export class ProfesorComponent implements OnInit {
   listadoProfesorWS: any;
   dataSourceF: any;
   selectedProfesor: Profesor | null = null;// en este se puede guardar profesor o nulo y se inicializa en nulo
-  displayedColumns: string[] = ['Cedula', 'Nombre', 'Apellido', 'Celular', 'Correo', 'Direccion'];
+  displayedColumns: string[] = ['Cedula', 'Nombre', 'Apellido', 'Celular', 'Correo', 'Direccion','Accion'];
   dataSource = this.servicio.getAllProfesores();
   @ViewChild(MatTable)
   table!: MatTable<Profesor>;
