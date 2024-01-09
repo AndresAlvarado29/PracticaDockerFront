@@ -9,11 +9,7 @@
             <input type="text" id="txtCedula" [(ngModel)]="curso.nombre" placeholder="0101111111" required>
             <label class="form-label" for="txtNombre"><span>Numero de horas</span></label>
             <input type="number" id="txtNombre" [(ngModel)]="curso.numeroDeHoras" placeholder="Juan" required>
-            <label class="form-label" for="txtCedula"><span>Profesor Cedula</span></label>
-            <input type="text" id="txtCedula" [(ngModel)]="profesor.cedula" placeholder="0101111111" required>
-            <label class="form-label" for="txtNombre"><span>Profesor Nombre</span></label>
-            <input type="text" id="txtNombre" [(ngModel)]="profesor.nombre" placeholder="Perez" required>
-            <div><button id="boton" class="btn btn-outline-primary" (click)="guardarWS(profesor,curso)">Registrarse</button></div>
+            <div><button id="boton" class="btn btn-outline-primary" (click)="guardarWS(curso)">Registrarse</button></div>
         </div>
     </div>
 </div>
@@ -28,23 +24,15 @@
         <mat-header-cell *matHeaderCellDef> Numero de horas </mat-header-cell>
         <mat-cell *matCellDef="let curso"> {{curso.numeroDeHoras}} </mat-cell>
       </ng-container>
-      <ng-container matColumnDef="Cedula">
-        <mat-header-cell *matHeaderCellDef> cedula Profesor </mat-header-cell>
-        <mat-cell *matCellDef="let profesor"> {{curso.profesor.cedula}} </mat-cell>
-      </ng-container>
-      <ng-container matColumnDef="Profesor">
-        <mat-header-cell *matHeaderCellDef> Nombre Profesor </mat-header-cell>
-        <mat-cell *matCellDef="let profesor"> {{curso.profesor.nombre}} </mat-cell>
-      </ng-container>
-    <!--  <ng-container matColumnDef="Accion">
+     <ng-container matColumnDef="Accion">
         <mat-header-cell *matHeaderCellDef> Accion </mat-header-cell>
         <mat-cell *matCellDef="let curso">
-          ngClass se utiliza para agregar clases dinamicamente en funcion de una condicion para agregar css al boton de la fila que va hacer editada con la
-          condicion de que selectedcurso sea igual a el curso
-          <button class="botonT btn btn-outline-primary" [ngClass]="{ 'selected-row': curso === selectedCurso }">Editar</button>
-          <button class="botonT btn btn-outline-primary" >Borrar</button>
+        <!--ngClass se utiliza para agregar clases dinamicamente en funcion de una condicion para agregar css al boton de la fila que va hacer editada con la
+          condicion de que selectedcurso sea igual a el curso-->
+          <button class="botonT btn btn-outline-primary" [ngClass]="{ 'selected-row': curso === selectedCurso }" (click)="editarWS(curso)">Editar</button>
+          <button class="botonT btn btn-outline-primary" (click)="borrarWS(curso)">Borrar</button>
         </mat-cell>
-      </ng-container>-->
+      </ng-container>
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>

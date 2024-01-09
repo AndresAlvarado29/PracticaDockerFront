@@ -63,23 +63,18 @@ export class CursoComponent implements OnInit {
     
     }*/
 
-    async guardarWS(pro: Profesor, cur: Curso) {
+    async guardarWS(cur: Curso) {
       console.log(cur);
-      console.log(this.profesor.cedula);
+      //console.log(this.profesor.cedula);
       
-      const profesorEncontrado = this.buscar(pro);
-    
-      if (profesorEncontrado) {
-        cur.profesor=profesorEncontrado;
+      //const profesorEncontrado = this.buscar(pro);
         this.servicio.saveCurso(cur).subscribe(data => {
           console.log("curso guardado: ", data);
           this.ngOnInit();
           this.curso = new Curso();
           this.tabla=true
         });
-      } else {
-        console.error('No se encontró el profesor');
-      }
+      
     }
 
     buscar(pro: Profesor){
@@ -98,7 +93,27 @@ export class CursoComponent implements OnInit {
       return pro
       
     }
-
+    editarWS(curso: Curso) {
+      this.selectedCurso = curso;
+      /*
+      Object.assign hace una copia del profesor para tabajar con una
+      entidad independiente para no afectar a la tabla original sin
+      pasar antes de la funcion guardarWS 
+      */
+      this.curso = Object.assign({}, curso);  // Copia el curso seleccionado en el formulario
+    }
+    borrarWS(curso: Curso) {
+      /*es un mensaje de confirmacion antes de realizar la 
+      accion de borrar, cuando se acepte se borrar caso contrario 
+      no se hara nada*/
+      const confirmacion = window.confirm("¿Estás seguro de realizar esta acción?");
+      if (confirmacion) {
+        this.servicio.deleteC(curso.id).subscribe(() => {
+          this.ngOnInit();
+          alert("Curso borrado exitosamente");
+        })
+      }
+    }
     
 }
   

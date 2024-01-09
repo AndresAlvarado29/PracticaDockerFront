@@ -11,33 +11,42 @@ export class ServicioService {
 
   constructor(private http: HttpClient) { }
   save(cliente: Cliente){
-    return this.http.post<any>("http://localhost:8090/ms/estudiante/crear", cliente)
+    return this.http.post<any>("http://localhost:8080/MicroserviciosRest/api/cliente/crear", cliente)
   }
   buscarEstudiante(cedula: String){
-    return this.http.get<any>("http://localhost:8080/ms/estudiante/buscar/"+ cedula)
+    return this.http.get<any>("http://localhost:8080/MicroserviciosRest/api/cliente/buscar/"+ cedula)
     }
     actualizar(cliente: Cliente){
-    return this.http.post<any>("http://localhost:8080/ms/estudiante/actualizar", cliente)
+    return this.http.post<any>("http://localhost:8080/MicroserviciosRest/api/cliente/crear", cliente)
     }
   getAll(){
-    return this.http.get<any>("http://localhost:8080/ms/estudiante/all")
-    } 
+    return this.http.get<any>("http://localhost:8080/MicroserviciosRest/api/cliente/all")
+    }
+  delete(cedula: string) {
+    return this.http.delete<any>("http://localhost:8080/MicroserviciosRest/api/cliente/borrar/"+cedula);
+  }
   saveProfesor(profesor: Profesor){
-    return this.http.post<any>("http://localhost:8190/microservice/profesor/guardar", profesor)
+    return this.http.post<any>("http://localhost:8080/MicroserviciosRest/api/docente/crear", profesor)
     }
   getAllProfesores(){
-    return this.http.get<any>("http://localhost:8080/microservice/profesor/all")
+    return this.http.get<any>("http://localhost:8080/MicroserviciosRest/api/docente/all")
     }
   buscar(cedula: String){
-    return this.http.get<any>("http://localhost:8080/microservice/profesor/buscar/"+ cedula)
+    return this.http.get<any>("http://localhost:8080/MicroserviciosRest/api/docente/buscar/"+ cedula)
     }
+    deleteD(cedula: string) {
+      return this.http.delete<any>("http://localhost:8080/MicroserviciosRest/api/docente/borrar/"+cedula);
+    }  
   saveCurso(curso: Curso){
-    return this.http.post<any>("http://localhost:9090/microservice/curso/guardar", curso)
+    return this.http.post<any>("http://localhost:8080/MicroserviciosRest/api/curso/guardar", curso)
     }
   getAllCursos(){
-    return this.http.get<any>("http://localhost:8080/microservice/curso/all")
+    return this.http.get<any>("http://localhost:8080/MicroserviciosRest/api/curso/all")
+    }
+    deleteC(id: number) {
+      return this.http.delete<any>("http://localhost:8080/MicroserviciosRest/api/curso/borrar/"+id);
     } 
   buscarProfesor(cedula: String){
-    return this.http.get<any>("http://localhost:8080/microservice/curso/buscarPro/"+cedula)
+    return this.http.get<any>("http://localhost:8080/MicroserviciosRest/api/docente/buscar"+cedula)
     }     
 }

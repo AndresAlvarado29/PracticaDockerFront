@@ -80,6 +80,18 @@ export class ProfesorComponent implements OnInit {
     */
     this.profesor = Object.assign({}, profesor);  // Copia el profesor seleccionado en el formulario
   }
+  borrarWS(profesor: Profesor) {
+    /*es un mensaje de confirmacion antes de realizar la 
+    accion de borrar, cuando se acepte se borrar caso contrario 
+    no se hara nada*/
+    const confirmacion = window.confirm("¿Estás seguro de realizar esta acción?");
+    if (confirmacion) {
+      this.servicio.deleteD(profesor.cedula).subscribe(() => {
+        this.ngOnInit();
+        alert("Cliente borrado exitosamente");
+      })
+    }
+  }
   colorOriginal() {
     this.inputCedula = '#bbbabac5';
     this.inputNombre = '#bbbabac5';
