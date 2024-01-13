@@ -1,6 +1,7 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 # quito el dist del git ignore para subirlo y probarlo en google cloud
 # Compiled output
+# ng build -c production sirve para mandar a produccion
 #/dist
 /tmp
 /out-tsc
